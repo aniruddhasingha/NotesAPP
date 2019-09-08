@@ -18,12 +18,10 @@ MongoClient.connect(connectionURL, {
 })
 //Function to  read note from dataBase
 function readNote(refId) {
-    //console.log(refId)
     let query = {
         refId: refId
     }
     return db.collection('tasks').find(query).toArray().then((result) => {
-        console.log(result)
         return result
     })
 }
@@ -32,7 +30,6 @@ function deleteNote(refId) {
     let query = {
         refId: refId
     }
-
     return db.collection('tasks').deleteOne(query).then((result) => {
         return true
     }).catch((error) => {
@@ -45,7 +42,6 @@ function createNote(refId, content) {
         refId: refId,
         content: content
     }).then((result) => {
-        console.log(result.ops)
         return result.ops
     })
 }
@@ -58,7 +54,6 @@ function updateNote(refId, content) {
                 content: content
             }
         }).then((result) => {
-            console.log(result)
             return true
         })
 }

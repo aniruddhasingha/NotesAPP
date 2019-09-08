@@ -10,7 +10,6 @@ app.listen(port, () => {
 //Read data
 app.get('/notes/read/:refId', (req, res) => {
     const refId = req.params
-    console.log(req.params)
     mongo.readNote(req.params.refId).then((result) => {
         res.send(result)
     })
@@ -25,7 +24,7 @@ app.get('/notes/delete/:refId', (req, res) => {
 
 })
 //Create data
-app.post('/notes/create/post', (req, res) => {
+app.post('/notes/create/postNotes', (req, res) => {
 
     mongo.createNote(req.body.refId, req.body.content).then((result) => {
         res.send(result)
@@ -33,7 +32,7 @@ app.post('/notes/create/post', (req, res) => {
 
 })
 //Update data
-app.post('/notes/update/post', (req, res) => {
+app.post('/notes/update/postUpdate', (req, res) => {
     mongo.updateNote(req.body.refId, req.body.content).then((result) => {
         res.send(result)
     })
