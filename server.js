@@ -7,6 +7,11 @@ const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`listening on port ${port}`)
 })
+app.get('/notes/read', (req, res) => {
+    mongo.readAllNote().then((result) => {
+        res.send(result)
+    })
+})
 //Read data
 app.get('/notes/read/:refId', (req, res) => {
     const refId = req.params

@@ -16,6 +16,12 @@ MongoClient.connect(connectionURL, {
     }
     db = client.db(databaseName)
 })
+
+function readAllNote() {
+    return db.collection('tasks').find({}).toArray().then((result) => {
+        return result
+    })
+}
 //Function to  read note from dataBase
 function readNote(refId) {
     let query = {
@@ -59,5 +65,5 @@ function updateNote(refId, content) {
 }
 //exporting function to server.js
 module.exports = {
-    readNote, deleteNote, createNote, updateNote
+    readNote, deleteNote, createNote, updateNote, readAllNote
 }
