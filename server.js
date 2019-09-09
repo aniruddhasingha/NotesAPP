@@ -15,10 +15,8 @@ app.get('/notes/read/:refId', (req, res) => {
     })
 })
 //Delete data
-app.get('/notes/delete/:refId', (req, res) => {
-
-    const refId = req.params.refId
-    mongo.deleteNote(refId).then((result) => {
+app.delete('/notes/delete/:refId', (req, res) => {
+    mongo.deleteNote(req.params.refId).then((result) => {
         res.send(result)
     })
 
